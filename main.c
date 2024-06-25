@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <time.h>
-#include "manipuladorMatriz.c"
-#include "operacoesMatriz.c"
+#include "manipuladorMatriz.h"
+#include "operacoesMatriz.h"
 
 int tamanhoMatriz;
 
