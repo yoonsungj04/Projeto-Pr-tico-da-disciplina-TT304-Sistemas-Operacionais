@@ -1,14 +1,11 @@
-all: manipuladorMatriz.o operacoesMatriz.o operacoesThread.o
-	gcc -o main main.c manipuladorMatriz.o operacoesMatriz.o operacoesThread.o -lpthread
+all: threadManipularMatriz.o threadOperacoesMatriz.o
+	gcc -o main main.c threadManipularMatriz.o threadOperacoesMatriz.o -lpthread
 
-manipuladorMatriz.o:	manipuladorMatriz.h
-	gcc -c manipuladorMatriz.c
+threadManipularMatriz.o: threadManipularMatriz.o 
+	gcc -c threadManipularMatriz.c
 
-operacoesMatriz.o: operacoesMatriz.h
-	gcc -c operacoesMatriz.c
-
-operacoesThread.o: operacoesThread.h
-	gcc -c operacoesThread.c
+threadOperacoesMatriz.o: threadOperacoesMatriz.h
+	gcc -c threadOperacoesMatriz.c
 
 clean:
 	rm -rf *.o
