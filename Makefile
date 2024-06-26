@@ -1,5 +1,5 @@
 all: threadManipularMatriz.o threadOperacoesMatriz.o
-	gcc -o main main.c threadManipularMatriz.o threadOperacoesMatriz.o -lpthread
+	gcc -o prog main.c threadManipularMatriz.o threadOperacoesMatriz.o -lpthread
 
 threadManipularMatriz.o: threadManipularMatriz.o 
 	gcc -c threadManipularMatriz.c
