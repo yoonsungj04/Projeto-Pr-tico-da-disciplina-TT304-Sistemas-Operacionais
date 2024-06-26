@@ -5,6 +5,8 @@
 #include "threadManipularMatriz.h"
 #include "threadOperacoesMatriz.h"
 
+#define BILLION 1000000000L
+
 int tamanhoMatriz;
 int numThreads;
 
@@ -29,6 +31,11 @@ int main(int argc, char *argv[]) {
 
     clock_t start, end;
     double tempoTotal, tempoSoma, tempoMultiplicacao, tempoReducao;
+
+    struct timespec begin, finish;
+    double tempoTotalComClockGetTime;
+
+    clock_gettime(CLOCK_MONOTONIC, &begin);
 
     start = clock();
 
@@ -67,8 +74,12 @@ int main(int argc, char *argv[]) {
     ThreadProcessamentoArgs somaArgs[numThreads];
     int elementosPorThread = (tamanhoMatriz * tamanhoMatriz) / numThreads;
     int restante = (tamanhoMatriz * tamanhoMatriz) % numThreads;
+    
+    
+
 
     clock_t somaStart = clock();
+
     for (int i = 0; i < numThreads; i++) {
         somaArgs[i] = (ThreadProcessamentoArgs){matrizA, matrizB, matrizD, i * elementosPorThread, (i + 1) * elementosPorThread, tamanhoMatriz};
         if (i == numThreads - 1) {
@@ -163,6 +174,10 @@ int main(int argc, char *argv[]) {
 
     free(matrizE);
 
+    clock_gettime(CLOCK_MONOTONIC, &finish);
+
+    tempoTotalComClockGetTime = (finish.tv_sec - begin.tv_sec);
+    tempoTotalComClockGetTime += (finish.tv_nsec - begin.tv_nsec) / 1000000000.0;
     end = clock();
     tempoTotal = ((double) (end - start)) / CLOCKS_PER_SEC;
 
@@ -173,6 +188,6 @@ int main(int argc, char *argv[]) {
     printf("Tempo multiplicação: %.3f segundos.\n", tempoMultiplicacao);
     printf("Tempo redução: %.3f segundos.\n", tempoReducao);
     printf("Tempo total: %.3f segundos.\n", tempoTotal);
-
+    printf("Tempo total com clock_gettime: %.3f segundos.\n", tempoTotalComClockGetTime);
     return 0;
 }
