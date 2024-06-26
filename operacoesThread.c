@@ -1,13 +1,4 @@
-#include <pthread.h>
-
-typedef struct {
-    int *matriz1;
-    int *matriz2;
-    int *resultado;
-    int start;
-    int end;
-    int tamanhoMatriz;
-} ThreadArgs;
+#include "operacoesThread.h"
 
 pthread_mutex_t mutex;
 int somaReducao = 0;

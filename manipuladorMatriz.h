@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #ifndef MANIPULADORMATRIZ_H
 #define MANIPULADORMATRIZ_H
 

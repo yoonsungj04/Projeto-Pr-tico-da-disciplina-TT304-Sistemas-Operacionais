@@ -1,7 +1,10 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
 #ifndef OPERACOESTHREAD_H
 #define OPERACOESTHREAD_H
-
-#include <pthread.h>
 
 typedef struct {
     int *matriz1;

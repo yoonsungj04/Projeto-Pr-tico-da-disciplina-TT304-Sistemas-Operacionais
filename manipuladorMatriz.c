@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "manipuladorMatriz.h"
 
 int abrirArquivos(const char* caminho, int** matriz, int tamanhoMatriz) {
     FILE *arquivo = fopen(caminho, "r");
