@@ -1,7 +1,7 @@
 all: manipuladorMatriz.o operacoesMatriz.o operacoesThread.o
 	gcc -o main main.c manipuladorMatriz.o operacoesMatriz.o operacoesThread.o -lpthread
 
-manipuladorMatriz.o:	manipuladorMatriz.h
+manipuladorMatriz.o: manipuladorMatriz.h
 	gcc -c manipuladorMatriz.c
 
 operacoesMatriz.o: operacoesMatriz.h
